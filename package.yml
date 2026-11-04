@@ -1,0 +1,17 @@
+package: community.lazycat.app.damselfly
+name: Damselfly
+description: "Server-based photo management: index huge image collections, face & object detection, fast metadata search."
+version: 4.5.3
+min_os_version: "1.5.0"
+homepage: https://damselfly.info
+author: Mark Otway
+license: GPL-3.0
+permissions:
+  required: []
+locales:
+  zh:
+    name: Damselfly
+    description: "照片管理服务：索引超大规模图片库，支持人脸/物体检测与元数据快速检索。"
+  en:
+    name: Damselfly
+    description: "Server-based photo management: index huge image collections, face & object detection, fast metadata search."

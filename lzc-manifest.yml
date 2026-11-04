@@ -1,0 +1,26 @@
+application:
+  subdomain: damselfly
+  multi_instance: false
+  # Damselfly has no built-in accounts in this configuration, so it stays behind
+  # the platform login (no public_path).
+  upstreams:
+    - location: /
+      backend: http://damselfly:6363/
+services:
+  damselfly:
+    # upstream: webreaper/damselfly:4.5.3
+    image: docker.1ms.run/webreaper/damselfly:4.5.3
+    binds:
+      - /lzcapp/var/config:/config
+      - /lzcapp/var/thumbs:/thumbs
+      - /lzcapp/var/pictures:/pictures
+usage: |
+  Damselfly 是照片管理服务：把照片放进 pictures 目录，它会自动索引，
+  支持关键词、文件夹与文件名检索，并带人脸/物体检测。
+
+  说明：
+    - 照片放在 data 目录下的 pictures 文件夹（通过文件管理器访问）。
+    - 索引数据库与缩略图存放在 config / thumbs 目录，会随应用持久化保留。
+    - 本应用没有内置账号体系，保留懒猫入口登录，不对外开放（未使用 public_path）。
+    - 首次索引大图库会比较耗时；人脸/物体检测在 CPU 上运行，速度取决于机器性能。
+    - 未做实机验证。
